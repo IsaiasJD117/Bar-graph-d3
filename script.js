@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
         var margin={
             top: 5,
             right: 10,
-            bottom: 400,
+            bottom: 85,
             left: 75
             }
         var width = 1000 - margin.left - margin.right;
@@ -51,11 +51,17 @@ document.addEventListener('DOMContentLoaded', function(){
             .attr('id', 'tooltip')
             .style('opacity', 0);
                         
-        var chart = d3.select('.chart')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.botton)
-            .append('g')
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        var chart = d3.select("#chart")
+        .append("div")
+        // Container class to make it responsive.
+        .classed("svg-container", true) 
+        .append("svg")
+        // Responsive SVG needs these 2 attributes and no width and height attr.
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "-75 -65 1000 500")
+        // Class to make it responsive.
+        .classed("svg-content-responsive", true)
+    
         
         chart.append('g')
             .attr("id", "x-axis")
